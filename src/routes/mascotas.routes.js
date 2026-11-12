@@ -23,3 +23,5 @@ router.delete("/:idMascota", deletePet)
 
 //actualizar la mascota PUT/PATCH
 router.put("/:idMascota", editPet)
+
+export default router
