@@ -9,7 +9,8 @@ const getAll = async (req, res) =>{
 }
 
 const getById = async (req, res) =>{
-
+    const unaMascotaCompleta = await selectById(req.params.idMascota)
+    res.json(unaMascotaCompleta)
 }
 
 const getBySpecies = async (req, res) =>{

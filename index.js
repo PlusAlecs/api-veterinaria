@@ -5,7 +5,7 @@ import app from "./src/app.js"
 // Crear el servidor
 const server = http.createServer(app)
 
-const PORT = process.env.PORT || process.env.SERV_PORT
+const PORT = process.env.PORT || 3000
 server.listen(PORT)
 
 // Dos funciones

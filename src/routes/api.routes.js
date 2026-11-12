@@ -8,7 +8,7 @@ const router = Router()
 //todas las rutas de nuestra api, tiene que haber tantas rutas como tablas en la base de datos. usuarios, mascotas.
 
 router.use("/mascotas", mascotasRoutes)
-router.use("/mascotas", usuariosRoutes)
+router.use("/usuarios", usuariosRoutes)
 // router.use("/veterinaros", veterinariosRoutes)
 
 export default router
