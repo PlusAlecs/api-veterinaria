@@ -15,11 +15,11 @@ router.get("/:idMascota/especie", getBySpecies)
 //obtener todas las mascotas por especie GET
 router.get("/especie/all/:especie", getAllBySpecies)
 
-//dar de alta una mascota POST
-router.post("/", insertPet)
-
 //borrar la mascota DELETE
 router.delete("/:idMascota", deletePet)
+
+//dar de alta una mascota POST
+router.post("/", insertPet)
 
 //actualizar la mascota PUT/PATCH
 router.put("/:idMascota", editPet)
