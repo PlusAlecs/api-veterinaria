@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getAllUsers, getById } from "../controllers/usuarios.controller.js";
+import { getAllUsers, getById, getByDni } from "../controllers/usuarios.controller.js";
 
 const router = Router()
 
@@ -10,6 +10,7 @@ router.get("/", getAllUsers)
 router.get("/:idUsuario", getById)
 
 //obtener usuario completo por DNI
+router.get("/dni/:dniUsuario", getByDni)
 
 //obtener todos los usuarios de una localidad
 

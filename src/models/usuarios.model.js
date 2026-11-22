@@ -10,4 +10,11 @@ const selectById = async (idUsuario) =>{
     return result[0]
 }
 
-export { selectAllUsers, selectById }
+const selectByDni = async (dniUsuario) =>{
+    const [result] = await db.execute(`select * from dueno where dni = ?`, [dniUsuario])
+    console.log(dniUsuario)
+    return result[0]
+}
+
+
+export { selectAllUsers, selectById, selectByDni }

@@ -1,4 +1,4 @@
-import { selectAllUsers, selectById } from "../models/usuarios.model.js";
+import { selectAllUsers, selectById, selectByDni } from "../models/usuarios.model.js";
 
 
 
@@ -12,7 +12,12 @@ const getById = async (req, res) =>{
     res.json(unUsuarioCompleto)
 }
 
+const getByDni = async (req, res) =>{
+    const unUsuarioCompleto = await selectByDni(String(req.params.dniUsuario))
+    res.json(unUsuarioCompleto)
+}
 
 
-export { getAllUsers, getById }
+
+export { getAllUsers, getById, getByDni }
 
