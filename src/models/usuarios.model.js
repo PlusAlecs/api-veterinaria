@@ -16,5 +16,10 @@ const selectByDni = async (dniUsuario) =>{
     return result[0]
 }
 
+const selectbyLocation = async (localidadUsuario) => {
+    const [result] = await db.execute(`select * from dueno where localidad = ?`, [localidadUsuario])
+    return result
+}
 
-export { selectAllUsers, selectById, selectByDni }
+
+export { selectAllUsers, selectById, selectByDni, selectbyLocation }

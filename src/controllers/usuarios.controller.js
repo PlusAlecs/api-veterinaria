@@ -1,4 +1,4 @@
-import { selectAllUsers, selectById, selectByDni } from "../models/usuarios.model.js";
+import { selectAllUsers, selectById, selectByDni, selectbyLocation } from "../models/usuarios.model.js";
 
 
 
@@ -17,7 +17,13 @@ const getByDni = async (req, res) =>{
     res.json(unUsuarioCompleto)
 }
 
+const getByLocation = async (req, res) =>{
+    const usuarios = await selectbyLocation(String(req.params.localidadUsuario))
+    res.json(usuarios)
+}
 
 
-export { getAllUsers, getById, getByDni }
+
+
+export { getAllUsers, getById, getByDni, getByLocation }
 
