@@ -5,6 +5,9 @@ const selectAllUsers = async ()=>{
     return result
 }
 
+const selectById = async (idUsuario) =>{
+    const [result] = await db.execute(`select * from dueno where id = ?`, [idUsuario])
+    return result[0]
+}
 
-
-export { selectAllUsers }
+export { selectAllUsers, selectById }

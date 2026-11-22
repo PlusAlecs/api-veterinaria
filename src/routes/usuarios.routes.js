@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getAllUsers } from "../controllers/usuarios.controller.js";
+import { getAllUsers, getById } from "../controllers/usuarios.controller.js";
 
 const router = Router()
 
@@ -7,6 +7,7 @@ const router = Router()
 router.get("/", getAllUsers)
 
 //obtener usuario por id
+router.get("/:idUsuario", getById)
 
 //obtener usuario completo por DNI
 
