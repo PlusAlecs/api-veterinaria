@@ -78,4 +78,50 @@ const deleteUserById = async (idUsuario) =>{
         return { status: false, message: "ha ocurrido un error, intentalo de nuevo"}
 } 
 
-export { selectAllUsers, selectById, selectByDni, selectbyLocation, selectByComStatus, selectBySurname, selectBasicById, insertNewUser, deleteUserById }
+const updateUserById = async (idUsuario, {
+    dni,
+    nombre,
+    apellidos,
+    fecha_nacimiento = null,
+    telefono = null,
+    email = null,
+    direccion = null,
+    localidad = null,
+    codigo_postal = null,
+    acepta_comunicaciones = 0,
+    fecha_alta = null
+}) =>{
+    const [result] = await db.execute(
+        `update dueno set
+            dni = ?,
+            nombre = ?,
+            apellidos = ?,
+            fecha_nacimiento = ?,
+            telefono = ?,
+            email = ?,
+            direccion = ?,
+            localidad = ?,
+            codigo_postal = ?,
+            acepta_comunicaciones = ?,
+            fecha_alta = ?
+         where id = ?`,
+        [
+            dni,
+            nombre,
+            apellidos,
+            fecha_nacimiento,
+            telefono,
+            email,
+            direccion,
+            localidad,
+            codigo_postal,
+            acepta_comunicaciones,
+            fecha_alta,
+            idUsuario
+        ]
+    )
+    return result
+}
+
+export { selectAllUsers, selectById, selectByDni, selectbyLocation, 
+    selectByComStatus, selectBySurname, selectBasicById, insertNewUser, deleteUserById, updateUserById }

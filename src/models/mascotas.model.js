@@ -22,7 +22,7 @@ const selectPetsBySpecies = async (especie) =>{
 }
 
 const deletePetById = async (idMascota) =>{
-    const [result] = await db.execute(`delete from mascotas where id =?`, [idMascota])
+    const [result] = await db.execute(`delete from mascota where id = ?`, [idMascota])
     if(result.affectedRows === 1)
         return { status: true, message: "la mascota se ha borrado correctamente"}
     else
@@ -82,7 +82,39 @@ const updatePetById = async (idMascota, {
     fecha_fallecimiento = null,
     observaciones = null
 }) =>{
-    const [result] = await db.execute(``)
+    const [result] = await db.execute(
+        `update mascota set
+            id_dueno = ?,
+            nombre = ?,
+            especie = ?,
+            raza = ?,
+            sexo = ?,
+            fecha_nacimiento = ?,
+            peso_kg = ?,
+            microchip = ?,
+            color = ?,
+            esterilizado = ?,
+            fecha_alta = ?,
+            fecha_fallecimiento = ?,
+            observaciones = ?
+         where id = ?`,
+        [
+            id_dueno,
+            nombre,
+            especie,
+            raza,
+            sexo,
+            fecha_nacimiento,
+            peso_kg,
+            microchip,
+            color,
+            esterilizado,
+            fecha_alta,
+            fecha_fallecimiento,
+            observaciones,
+            idMascota
+        ]
+    )
     return result
 }
  

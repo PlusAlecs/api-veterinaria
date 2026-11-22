@@ -25,6 +25,8 @@ const getAllBySpecies = async (req, res) =>{
 
 const deletePet = async (req, res) =>{
     const response = await deletePetById(Number(req.params.idMascota))
+    if (!response.status)
+        return res.status(404).json({ status: false, message: "mascota no encontrada" })
     res.json(response)
 }
 
@@ -44,7 +46,7 @@ const editPet = async (req, res) =>{
         res.json(mascota)
     }
     else
-        res,json( { status: false, message: "No se ha podido actualizar la mascota"} )
+        res.status(404).json( { status: false, message: "No se ha podido actualizar la mascota"} )
 }
 
 export { getAll, getById, getBySpecies, getAllBySpecies, insertPet, editPet, deletePet }

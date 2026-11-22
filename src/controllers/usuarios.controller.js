@@ -7,7 +7,8 @@ import {
     selectBySurname, 
     selectBasicById,
     insertNewUser,
-    deleteUserById } from "../models/usuarios.model.js";
+    deleteUserById,
+    updateUserById } from "../models/usuarios.model.js";
 
 const getAllUsers = async (req, res)=>{
     const usuarios = await selectAllUsers();
@@ -29,7 +30,7 @@ const getByLocation = async (req, res) =>{
     res.json(usuarios)
 }
 
-const getOpenToCom = async (res) =>{
+const getOpenToCom = async (req, res) =>{
     const usuarios = await selectByComStatus()
     res.json(usuarios)
 }
@@ -52,8 +53,23 @@ const insertUser = async (req, res) =>{
 
 const deleteUser = async (req, res) =>{
     const response = await deleteUserById(Number(req.params.idUsuario))
+    if (!response.status)
+        return res.status(404).json({ status: false, message: "usuario no encontrado" })
     res.json(response)
 }
 
-export { getAllUsers, getById, getByDni, getByLocation, getOpenToCom, getBySurname, getBasicById, insertUser, deleteUser }
+const editUser = async (req, res) =>{
+    const dataUser = req.body
+    const idUsuario = Number(req.params.idUsuario)
+
+    const respuesta = await updateUserById(idUsuario, dataUser)
+    if ( respuesta.affectedRows === 1 ){
+        const usuario = await selectById(idUsuario)
+        res.json(usuario)
+    }
+    else
+        res.status(404).json( { status: false, message: "No se ha podido actualizar el usuario"} )
+}
+
+export { getAllUsers, getById, getByDni, getByLocation, getOpenToCom, getBySurname, getBasicById, insertUser, deleteUser, editUser }
 

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getAllUsers, getById, getByDni, getByLocation, getOpenToCom, getBySurname, getBasicById, insertUser, deleteUser } from "../controllers/usuarios.controller.js";
+import { getAllUsers, getById, getByDni, getByLocation, getOpenToCom, getBySurname, getBasicById, insertUser, deleteUser, editUser } from "../controllers/usuarios.controller.js";
 
 const router = Router()
 
@@ -31,5 +31,6 @@ router.post("/", insertUser)
 router.delete("/:idUsuario", deleteUser)
 
 //editar un usuario por id
+router.put("/:idUsuario", editUser)
 
 export default router
