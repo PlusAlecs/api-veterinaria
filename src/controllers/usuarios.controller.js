@@ -1,6 +1,11 @@
-import { selectAllUsers, selectById, selectByDni, selectbyLocation, selectByComStatus, selectBySurname } from "../models/usuarios.model.js";
-
-
+import { 
+    selectAllUsers, 
+    selectById, 
+    selectByDni, 
+    selectbyLocation, 
+    selectByComStatus, 
+    selectBySurname, 
+    selectBasicById } from "../models/usuarios.model.js";
 
 const getAllUsers = async (req, res)=>{
     const usuarios = await selectAllUsers();
@@ -22,7 +27,7 @@ const getByLocation = async (req, res) =>{
     res.json(usuarios)
 }
 
-const getOpenToCom = async (req, res) =>{
+const getOpenToCom = async (res) =>{
     const usuarios = await selectByComStatus()
     res.json(usuarios)
 }
@@ -32,7 +37,10 @@ const getBySurname = async (req, res) =>{
     res.json(usuarios)
 }
 
+const getBasicById = async (req, res) =>{
+    const usuarios = await selectBasicById(Number(req.params.idUsuario))
+    res.json(usuarios)
+}
 
-
-export { getAllUsers, getById, getByDni, getByLocation, getOpenToCom, getBySurname }
+export { getAllUsers, getById, getByDni, getByLocation, getOpenToCom, getBySurname, getBasicById }
 

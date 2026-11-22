@@ -31,5 +31,10 @@ const selectBySurname = async (apellido) => {
     return result
 }
 
+const selectBasicById = async (idUsuario) =>{
+    const [result] = await db.execute(`select nombre, dni, telefono from dueno where id = ?`, [idUsuario])
+    return result
+}
 
-export { selectAllUsers, selectById, selectByDni, selectbyLocation, selectByComStatus, selectBySurname }
+
+export { selectAllUsers, selectById, selectByDni, selectbyLocation, selectByComStatus, selectBySurname, selectBasicById }
