@@ -1,4 +1,4 @@
-import { selectAllUsers, selectById, selectByDni, selectbyLocation } from "../models/usuarios.model.js";
+import { selectAllUsers, selectById, selectByDni, selectbyLocation, selectByComStatus } from "../models/usuarios.model.js";
 
 
 
@@ -22,8 +22,12 @@ const getByLocation = async (req, res) =>{
     res.json(usuarios)
 }
 
+const getOpenToCom = async (req, res) =>{
+    const usuarios = await selectByComStatus()
+    res.json(usuarios)
+}
 
 
 
-export { getAllUsers, getById, getByDni, getByLocation }
+export { getAllUsers, getById, getByDni, getByLocation, getOpenToCom }
 

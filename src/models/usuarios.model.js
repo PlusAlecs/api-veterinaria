@@ -21,5 +21,10 @@ const selectbyLocation = async (localidadUsuario) => {
     return result
 }
 
+const selectByComStatus = async () => {
+    const [result] = await db.execute(`select * from dueno where acepta_comunicaciones = true`)
+    return result
+}
 
-export { selectAllUsers, selectById, selectByDni, selectbyLocation }
+
+export { selectAllUsers, selectById, selectByDni, selectbyLocation, selectByComStatus }

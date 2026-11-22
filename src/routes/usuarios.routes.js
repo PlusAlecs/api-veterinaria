@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getAllUsers, getById, getByDni, getByLocation } from "../controllers/usuarios.controller.js";
+import { getAllUsers, getById, getByDni, getByLocation, getOpenToCom } from "../controllers/usuarios.controller.js";
 
 const router = Router()
 
@@ -16,6 +16,7 @@ router.get("/dni/:dniUsuario", getByDni)
 router.get("/loc/:localidadUsuario", getByLocation)
 
 //obtener todos los usuarios que aceptan comunicaciones
+router.get("/com/open", getOpenToCom)
 
 //obtener todosl os usuarios cuyo apellido sea López
 
