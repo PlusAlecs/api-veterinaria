@@ -6,7 +6,8 @@ import {
     selectByComStatus, 
     selectBySurname, 
     selectBasicById,
-    insertNewUser } from "../models/usuarios.model.js";
+    insertNewUser,
+    deleteUserById } from "../models/usuarios.model.js";
 
 const getAllUsers = async (req, res)=>{
     const usuarios = await selectAllUsers();
@@ -49,5 +50,10 @@ const insertUser = async (req, res) =>{
     res.json(usuario)
 }
 
-export { getAllUsers, getById, getByDni, getByLocation, getOpenToCom, getBySurname, getBasicById, insertUser }
+const deleteUser = async (req, res) =>{
+    const response = await deleteUserById(Number(req.params.idUsuario))
+    res.json(response)
+}
+
+export { getAllUsers, getById, getByDni, getByLocation, getOpenToCom, getBySurname, getBasicById, insertUser, deleteUser }
 

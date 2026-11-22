@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getAllUsers, getById, getByDni, getByLocation, getOpenToCom, getBySurname, getBasicById, insertUser } from "../controllers/usuarios.controller.js";
+import { getAllUsers, getById, getByDni, getByLocation, getOpenToCom, getBySurname, getBasicById, insertUser, deleteUser } from "../controllers/usuarios.controller.js";
 
 const router = Router()
 
@@ -28,6 +28,7 @@ router.get("/basic/:idUsuario", getBasicById)
 router.post("/", insertUser)
 
 //borrar un usuario por id
+router.delete("/:idUsuario", deleteUser)
 
 //editar un usuario por id
 

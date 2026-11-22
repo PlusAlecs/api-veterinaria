@@ -70,5 +70,12 @@ const insertNewUser = async ({
     return result.insertId
 }
 
+const deleteUserById = async (idUsuario) =>{
+    const [result] = await db.execute(`delete from dueno where id = ?`, [idUsuario])
+    if(result.affectedRows === 1)
+        return { status: true, message: "el usuario se ha borrado correctamente"}
+    else
+        return { status: false, message: "ha ocurrido un error, intentalo de nuevo"}
+} 
 
-export { selectAllUsers, selectById, selectByDni, selectbyLocation, selectByComStatus, selectBySurname, selectBasicById, insertNewUser }
+export { selectAllUsers, selectById, selectByDni, selectbyLocation, selectByComStatus, selectBySurname, selectBasicById, insertNewUser, deleteUserById }
