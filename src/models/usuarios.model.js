@@ -36,5 +36,39 @@ const selectBasicById = async (idUsuario) =>{
     return result
 }
 
+const insertNewUser = async ({
+    dni,
+    nombre,
+    apellidos,
+    fecha_nacimiento = null,
+    telefono = null,
+    email = null,
+    direccion = null,
+    localidad = null,
+    codigo_postal = null,
+    acepta_comunicaciones = 0,
+    fecha_alta = null
+}) => {
+    const [result] = await db.execute(
+        `insert into dueno
+            (dni, nombre, apellidos, fecha_nacimiento, telefono, email, direccion, localidad, codigo_postal, acepta_comunicaciones, fecha_alta)
+         values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        [
+            dni,
+            nombre,
+            apellidos,
+            fecha_nacimiento,
+            telefono,
+            email,
+            direccion,
+            localidad,
+            codigo_postal,
+            acepta_comunicaciones,
+            fecha_alta
+        ]
+    )
+    return result.insertId
+}
 
-export { selectAllUsers, selectById, selectByDni, selectbyLocation, selectByComStatus, selectBySurname, selectBasicById }
+
+export { selectAllUsers, selectById, selectByDni, selectbyLocation, selectByComStatus, selectBySurname, selectBasicById, insertNewUser }

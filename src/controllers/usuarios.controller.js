@@ -5,7 +5,8 @@ import {
     selectbyLocation, 
     selectByComStatus, 
     selectBySurname, 
-    selectBasicById } from "../models/usuarios.model.js";
+    selectBasicById,
+    insertNewUser } from "../models/usuarios.model.js";
 
 const getAllUsers = async (req, res)=>{
     const usuarios = await selectAllUsers();
@@ -42,5 +43,11 @@ const getBasicById = async (req, res) =>{
     res.json(usuarios)
 }
 
-export { getAllUsers, getById, getByDni, getByLocation, getOpenToCom, getBySurname, getBasicById }
+const insertUser = async (req, res) =>{
+    const idNuevoUsuario = await insertNewUser(req.body)
+    const usuario = await selectById(idNuevoUsuario)
+    res.json(usuario)
+}
+
+export { getAllUsers, getById, getByDni, getByLocation, getOpenToCom, getBySurname, getBasicById, insertUser }
 

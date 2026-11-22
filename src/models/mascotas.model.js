@@ -64,7 +64,7 @@ const insertNewPet = async ({
             observaciones
         ]
     )
-    return result
+    return result.insertId
 }
 
 const updatePetById = async (idMascota, {
