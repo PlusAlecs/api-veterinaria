@@ -67,7 +67,7 @@ const insertNewPet = async ({
     return result
 }
 
-const updatePetById = async (idMascota, {{
+const updatePetById = async (idMascota, {
     id_dueno,
     nombre,
     especie,
