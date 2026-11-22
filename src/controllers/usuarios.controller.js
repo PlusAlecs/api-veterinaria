@@ -1,4 +1,4 @@
-import { selectAllUsers, selectById, selectByDni, selectbyLocation, selectByComStatus } from "../models/usuarios.model.js";
+import { selectAllUsers, selectById, selectByDni, selectbyLocation, selectByComStatus, selectBySurname } from "../models/usuarios.model.js";
 
 
 
@@ -27,7 +27,12 @@ const getOpenToCom = async (req, res) =>{
     res.json(usuarios)
 }
 
+const getBySurname = async (req, res) =>{
+    const usuarios = await selectBySurname(String(req.params.apellidoUsuario))
+    res.json(usuarios)
+}
 
 
-export { getAllUsers, getById, getByDni, getByLocation, getOpenToCom }
+
+export { getAllUsers, getById, getByDni, getByLocation, getOpenToCom, getBySurname }
 

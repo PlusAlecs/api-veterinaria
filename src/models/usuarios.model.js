@@ -26,5 +26,10 @@ const selectByComStatus = async () => {
     return result
 }
 
+const selectBySurname = async (apellido) => {
+    const [result] = await db.execute(`select * from dueno where apellidos like ?`, [`%${apellido}%`])
+    return result
+}
 
-export { selectAllUsers, selectById, selectByDni, selectbyLocation, selectByComStatus }
+
+export { selectAllUsers, selectById, selectByDni, selectbyLocation, selectByComStatus, selectBySurname }
